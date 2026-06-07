@@ -30,6 +30,11 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 body {
   font-family: var(--font-family);
   background: var(--bg-gradient);
@@ -272,7 +277,7 @@ textarea.form-control {
 /* 1 to 5 Emoji Scale */
 .emoji-scale {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 0.75rem;
 }
 
@@ -349,7 +354,7 @@ textarea.form-control {
 /* Numeric scale (1-5 buttons) */
 .number-scale {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 0.5rem;
 }
 
@@ -845,6 +850,10 @@ body:has(.modal-overlay.active) {
 
 /* Ajustes especiales para teléfonos de pantalla estrecha (como iPhone 14 Pro, SE, etc.) */
 @media (max-width: 480px) {
+  body::before, body::after {
+    display: none !important;
+  }
+
   .survey-card {
     padding: 1.5rem 1rem;
   }
