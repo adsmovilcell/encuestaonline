@@ -570,7 +570,17 @@ body:has(.modal-overlay.active) {
   -webkit-overflow-scrolling: touch;
   flex: 1;
   padding-right: 0.35rem;
+  scrollbar-width: none; /* Ocultar barra en Firefox */
+  -ms-overflow-style: none;  /* Ocultar barra en IE/Edge antiguo */
 }
+
+/* Ocultar barra de scroll en Chrome, Safari y Edge */
+.modal-body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
 
 
 .modal-desc {
