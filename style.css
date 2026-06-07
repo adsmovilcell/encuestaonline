@@ -828,3 +828,104 @@ textarea.form-control {
     padding: 0.75rem 0.1rem;
   }
 }
+
+/* Ajustes especiales para teléfonos de pantalla estrecha (como iPhone 14 Pro, SE, etc.) */
+@media (max-width: 480px) {
+  .survey-card {
+    padding: 1.5rem 1rem;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .subtitle {
+    font-size: 0.82rem;
+    line-height: 1.4;
+  }
+  
+  .settings-btn {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 34px;
+    height: 34px;
+  }
+
+  .settings-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Optimización de escalas de valoración */
+  .emoji-scale, .number-scale {
+    gap: 0.35rem;
+  }
+
+  .scale-label, .number-label {
+    padding: 0.65rem 0.1rem;
+    background: rgba(255, 255, 255, 0.015);
+    border-color: rgba(255, 255, 255, 0.04);
+    min-height: 60px;
+    justify-content: center;
+  }
+
+  .scale-emoji {
+    font-size: 1.45rem;
+    margin-bottom: 0;
+  }
+
+  .scale-num {
+    font-size: 1.15rem;
+    margin-bottom: 0;
+  }
+
+  /* Ocultar etiquetas de texto de forma predeterminada para evitar la saturación visual */
+  .scale-text {
+    display: none;
+  }
+
+  /* Mostrar dinámicamente la etiqueta solo cuando el input correspondiente está seleccionado */
+  .scale-option input[type="radio"]:checked + .scale-label .scale-text,
+  .scale-option input[type="radio"]:checked + .number-label .scale-text {
+    display: block;
+    position: absolute;
+    bottom: -1.35rem;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 0.72rem;
+    color: var(--accent-start);
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(6, 182, 212, 0.15);
+    animation: fadeIn 0.2s ease-out;
+  }
+  
+  /* Alinear extremos para prevenir desbordamientos laterales de la tarjeta */
+  .scale-option:first-child input[type="radio"]:checked + .scale-label .scale-text,
+  .scale-option:first-child input[type="radio"]:checked + .number-label .scale-text {
+    left: 0;
+    transform: none;
+  }
+  
+  .scale-option:last-child input[type="radio"]:checked + .scale-label .scale-text,
+  .scale-option:last-child input[type="radio"]:checked + .number-label .scale-text {
+    right: 0;
+    left: auto;
+    transform: none;
+  }
+
+  /* Destacar la opción seleccionada eliminando el ruido de los otros bordes */
+  .scale-option input[type="radio"]:checked + .scale-label,
+  .scale-option input[type="radio"]:checked + .number-label {
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.12) 0%, rgba(139, 92, 246, 0.12) 100%);
+    border-color: var(--accent-start);
+    box-shadow: 0 0 15px var(--accent-glow);
+  }
+
+  /* Incrementar espacio inferior del grupo de formulario para evitar solapamientos con las etiquetas flotantes */
+  .form-group {
+    margin-bottom: 2.85rem;
+  }
+}
+
