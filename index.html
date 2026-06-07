@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encuesta del Curso Antigravity | Opinión de Estudiantes</title>
+  <meta name="description" content="Déjanos tu opinión sobre el curso Antigravity. Tu feedback nos ayuda a mejorar y ofrecer el mejor contenido de automatización e IA.">
+  <link rel="stylesheet" href="style.css?v=1.3">
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Config Trigger Button -->
+    <button class="settings-btn" id="openSettingsBtn" title="Configurar integración (Airtable/n8n)" aria-label="Configurar integración">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
+      </svg>
+    </button>
+
+    <!-- Main Card -->
+    <div class="survey-card" id="surveyCard">
+      
+      <!-- SURVEY FORM -->
+      <form id="surveyForm" novalidate>
+        
+        <div class="header">
+          <span class="badge">Feedback Estudiantes</span>
+          <h1>Curso Antigravity</h1>
+          <p class="subtitle">Cuéntanos tu experiencia para seguir impulsando tu aprendizaje</p>
+        </div>
+
+        <!-- ID Estudiante -->
+        <div class="form-group" id="group-id-estudiante">
+          <label for="id_estudiante" class="form-label">
+            Identificación de Estudiante <span class="req">*</span>
+          </label>
+          <div class="input-wrapper">
+            <span class="input-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </span>
+            <input 
+              type="text" 
+              id="id_estudiante" 
+              name="id_estudiante" 
+              class="form-control" 
+              placeholder="Ej. ALUMNO-10293" 
+              required
+            >
+          </div>
+          <span class="error-msg">Por favor, introduce tu identificador de estudiante.</span>
+        </div>
+
+        <!-- Nivel de Satisfacción -->
+        <div class="form-group" id="group-nivel-satisfaccion">
+          <label class="form-label">
+            ¿Cuál es tu nivel de satisfacción general? <span class="req">*</span>
+          </label>
+          <span class="label-desc">Escala del 1 (Muy insatisfecho) al 5 (Muy satisfecho)</span>
+          <div class="emoji-scale">
+            
+            <div class="scale-option">
+              <input type="radio" id="sat-1" name="nivel_satisfaccion" value="1" required>
+              <label for="sat-1" class="scale-label">
+                <span class="scale-emoji">😠</span>
+                <span class="scale-text">Muy Insatisfecho</span>
+              </label>
+            </div>
+            
+            <div class="scale-option">
+              <input type="radio" id="sat-2" name="nivel_satisfaccion" value="2">
+              <label for="sat-2" class="scale-label">
+                <span class="scale-emoji">🙁</span>
+                <span class="scale-text">Insatisfecho</span>
+              </label>
+            </div>
+
+            <div class="scale-option">
+              <input type="radio" id="sat-3" name="nivel_satisfaccion" value="3">
+              <label for="sat-3" class="scale-label">
+                <span class="scale-emoji">😐</span>
+                <span class="scale-text">Neutral</span>
+              </label>
+            </div>
+
+            <div class="scale-option">
+              <input type="radio" id="sat-4" name="nivel_satisfaccion" value="4">
+              <label for="sat-4" class="scale-label">
+                <span class="scale-emoji">🙂</span>
+                <span class="scale-text">Satisfecho</span>
+              </label>
+            </div>
+
+            <div class="scale-option">
+              <input type="radio" id="sat-5" name="nivel_satisfaccion" value="5">
+              <label for="sat-5" class="scale-label">
+                <span class="scale-emoji">😄</span>
+                <span class="scale-text">Muy Satisfecho</span>
+              </label>
+            </div>
+
+          </div>
+          <span class="error-msg">Selecciona un nivel de satisfacción.</span>
+        </div>
+
+        <!-- Claridad del Contenido -->
+        <div class="form-group" id="group-claridad-contenido">
+          <label class="form-label">
+            ¿Cómo calificarías la claridad del contenido? <span class="req">*</span>
+          </label>
+          <span class="label-desc">Escala del 1 (Muy poco claro) al 5 (Muy claro)</span>
+          <div class="number-scale">
+            
+            <div class="scale-option">
+              <input type="radio" id="clar-1" name="claridad_contenido" value="1" required>
+              <label for="clar-1" class="number-label">
+                <span class="scale-num">1</span>
+                <span class="scale-text">Muy Confuso</span>
+              </label>
+            </div>
+
+            <div class="scale-option">
+              <input type="radio" id="clar-2" name="claridad_contenido" value="2">
+              <label for="clar-2" class="number-label">
+                <span class="scale-num">2</span>
+                <span class="scale-text">Poco Claro</span>
+              </label>
+            </div>
+
+            <div class="scale-option">
+              <input type="radio" id="clar-3" name="claridad_contenido" value="3">
+              <label for="clar-3" class="number-label">
+                <span class="scale-num">3</span>
+                <span class="scale-text">Regular</span>
+              </label>
+            </div>
+
+            <div class="scale-option">
+              <input type="radio" id="clar-4" name="claridad_contenido" value="4">
+              <label for="clar-4" class="number-label">
+                <span class="scale-num">4</span>
+                <span class="scale-text">Claro</span>
+              </label>
+            </div>
+
+            <div class="scale-option">
+              <input type="radio" id="clar-5" name="claridad_contenido" value="5">
+              <label for="clar-5" class="number-label">
+                <span class="scale-num">5</span>
+                <span class="scale-text">Muy Claro</span>
+              </label>
+            </div>
+
+          </div>
+          <span class="error-msg">Selecciona una calificación de claridad.</span>
+        </div>
+
+        <!-- Aplicabilidad Práctica -->
+        <div class="form-group" id="group-aplicabilidad-practica">
+          <label class="form-label">
+            ¿Qué tan aplicable te parece en la práctica? <span class="req">*</span>
+          </label>
+          <span class="label-desc">Escala del 1 (Nada aplicable) al 5 (Muy aplicable)</span>
+          <div class="number-scale">
+            
+            <div class="scale-option">
+              <input type="radio" id="pr-1" name="aplicabilidad_practica" value="1" required>
+              <label for="pr-1" class="number-label">
+                <span class="scale-num">1</span>
+                <span class="scale-text">Inaplicable</span>
+              </label>
+            </div>
+
+            <div class="scale-option">
+              <input type="radio" id="pr-2" name="aplicabilidad_practica" value="2">
+              <label for="pr-2" class="number-label">
+                <span class="scale-num">2</span>
+                <span class="scale-text">Poco Útil</span>
+              </label>
+            </div>
+
+            <div class="scale-option">
+              <input type="radio" id="pr-3" name="aplicabilidad_practica" value="3">
+              <label for="pr-3" class="number-label">
+                <span class="scale-num">3</span>
+                <span class="scale-text">Moderada</span>
+              </label>
+            </div>
+
+            <div class="scale-option">
+              <input type="radio" id="pr-4" name="aplicabilidad_practica" value="4">
+              <label for="pr-4" class="number-label">
+                <span class="scale-num">4</span>
+                <span class="scale-text">Útil</span>
+              </label>
+            </div>
+
+            <div class="scale-option">
+              <input type="radio" id="pr-5" name="aplicabilidad_practica" value="5">
+              <label for="pr-5" class="number-label">
+                <span class="scale-num">5</span>
+                <span class="scale-text">Muy Práctico</span>
+              </label>
+            </div>
+
+          </div>
+          <span class="error-msg">Selecciona una calificación de aplicabilidad.</span>
+        </div>
+
+        <!-- Comentarios Adicionales -->
+        <div class="form-group" id="group-comentarios">
+          <label for="comentarios_adicionales" class="form-label">
+            Comentarios Adicionales
+          </label>
+          <textarea 
+            id="comentarios_adicionales" 
+            name="comentarios_adicionales" 
+            class="form-control" 
+            placeholder="¿Qué te ha parecido lo mejor? ¿Qué podemos mejorar?..."
+            maxlength="1000"
+          ></textarea>
+          <div class="textarea-footer">
+            <span id="charCounter">0 / 1000</span>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <span class="btn-text">Enviar Encuesta</span>
+          <span class="loader"></span>
+        </button>
+
+      </form>
+
+      <!-- SUCCESS SCREEN -->
+      <div class="success-card" id="successCard">
+        <div class="success-icon-wrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h2 class="success-title">¡Muchas gracias!</h2>
+        <p class="success-desc" id="successDesc">Tu opinión ha sido enviada con éxito. Valoramos enormemente tu retroalimentación para seguir perfeccionando el curso.</p>
+        
+        <div class="success-details">
+          <div class="details-row">
+            <span class="details-label">ID Estudiante:</span>
+            <span class="details-val" id="res-id"></span>
+          </div>
+          <div class="details-row">
+            <span class="details-label">Satisfacción:</span>
+            <span class="details-val" id="res-sat"></span>
+          </div>
+          <div class="details-row">
+            <span class="details-label">Claridad:</span>
+            <span class="details-val" id="res-clar"></span>
+          </div>
+          <div class="details-row">
+            <span class="details-label">Aplicabilidad:</span>
+            <span class="details-val" id="res-pr"></span>
+          </div>
+          <div class="details-row">
+            <span class="details-label">Destino:</span>
+            <span class="details-val" id="res-webhook">Demostración local</span>
+          </div>
+        </div>
+
+        <button type="button" class="reset-btn" id="resetBtn">Enviar otra encuesta</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SETTINGS MODAL (Webhook Configuration) -->
+  <div class="modal-overlay" id="settingsModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Configuración de Integración</h3>
+        <button class="close-btn" id="closeSettingsBtn" title="Cerrar" aria-label="Cerrar modal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group" style="margin-bottom: 1.5rem;">
+          <label for="integrationType" class="form-label">Tipo de Integración</label>
+          <select id="integrationType" class="form-control" style="padding-left: 1rem;">
+            <option value="airtable">Airtable (Recomendado)</option>
+            <option value="webhook">Webhook Personalizado (n8n)</option>
+            <option value="simulation">Simulado (Desconectado)</option>
+          </select>
+        </div>
+
+        <!-- Airtable configuration -->
+        <div id="airtableConfigSection">
+          <div class="form-group" style="margin-bottom: 1.25rem;">
+            <label for="airtableToken" class="form-label">Token de API (PAT)</label>
+            <input type="password" id="airtableToken" class="form-control" style="padding-left: 1rem;" placeholder="pat...">
+          </div>
+          <div class="form-group" style="margin-bottom: 1.25rem;">
+            <label for="airtableBaseId" class="form-label">ID de Base</label>
+            <input type="text" id="airtableBaseId" class="form-control" style="padding-left: 1rem;" placeholder="app...">
+          </div>
+          <div class="form-group" style="margin-bottom: 1.25rem;">
+            <label for="airtableTableId" class="form-label">ID/Nombre de Tabla</label>
+            <input type="text" id="airtableTableId" class="form-control" style="padding-left: 1rem;" placeholder="tbl... o Nombre">
+          </div>
+        </div>
+
+        <!-- Webhook configuration -->
+        <div id="webhookConfigSection" style="display: none;">
+          <p class="modal-desc" style="margin-bottom: 1rem;">Las respuestas se enviarán como una solicitud HTTP POST en formato JSON plano a la URL especificada.</p>
+          <div class="form-group" style="margin-bottom: 1.25rem;">
+            <label for="webhookUrl" class="form-label">Webhook URL</label>
+            <div class="input-wrapper">
+              <span class="input-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                </svg>
+              </span>
+              <input 
+                type="url" 
+                id="webhookUrl" 
+                class="form-control" 
+                placeholder="https://..." 
+                style="padding-left: 2.75rem;"
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- n8n Email Webhook configuration (always active alongside Airtable) -->
+        <div id="n8nEmailSection" style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.07);">
+          <label class="form-label" style="margin-bottom: 0.5rem;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #8b5cf6;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            Webhook de Email (n8n)
+          </label>
+          <p class="modal-desc" style="margin-bottom: 0.75rem; margin-top: -0.25rem;">Se dispara siempre al enviar, en paralelo con Airtable. Usa el endpoint de <strong>Producción</strong> cuando el workflow esté activo.</p>
+          
+          <div style="display: flex; gap: 0.5rem; margin-bottom: 0.75rem;">
+            <button type="button" class="n8n-env-btn" id="n8nProdBtn" data-env="prod" title="Usar endpoint de producción /webhook/">
+              🚀 Producción
+            </button>
+            <button type="button" class="n8n-env-btn" id="n8nTestBtn" data-env="test" title="Usar endpoint de test /webhook-test/">
+              🧪 Test
+            </button>
+          </div>
+
+          <input 
+            type="url" 
+            id="n8nEmailWebhookUrl" 
+            class="form-control" 
+            style="padding-left: 1rem; font-size: 0.8rem;"
+            placeholder="https://n8n-servidor.host/webhook/..."
+          >
+          <div class="webhook-badge" id="n8nEnvBadge" style="margin-top: 0.6rem;">
+            <span class="dot"></span>
+            <span id="n8nEnvText">–</span>
+          </div>
+        </div>
+
+        <div class="webhook-badge" id="webhookStatusBadge" style="margin-top: 1rem;">
+          <span class="dot"></span>
+          <span id="webhookStatusText">Desconectado (Modo simulación)</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="cancelSettingsBtn">Cancelar</button>
+        <button class="btn btn-primary" id="saveSettingsBtn">Guardar Conexión</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js?v=1.8"></script>
+</body>
+</html>
